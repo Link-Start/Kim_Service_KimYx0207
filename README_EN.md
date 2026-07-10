@@ -7,9 +7,10 @@
 ![GitHub stars](https://img.shields.io/github/stars/KimYx0207/agent-teams-playbook?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/KimYx0207/agent-teams-playbook?style=social)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/Claude_Code-2.1.39-green.svg)
+![Version](https://img.shields.io/badge/version-4.8.0-green.svg)
+![Runtime](https://img.shields.io/badge/runtimes-Claude%20Code%20%7C%20Codex-blue.svg)
 
-**A Claude Code Skill for generating executable multi-agent (Agent Teams) orchestration strategies**
+**A cross-runtime Skill for executable multi-agent orchestration on Claude Code and Codex**
 
 </div>
 
@@ -17,7 +18,7 @@
 
 ## Overview
 
-`agent-teams-playbook` is a Claude Code-first Skill for generating executable multi-agent orchestration strategies.
+`agent-teams-playbook` is a cross-runtime Skill for generating executable multi-agent orchestration strategies with runtime-native contracts for Claude Code and Codex.
 
 > **Core Concept**: "Swarm" is the generic industry term; Claude Code's official concept is **Agent Teams**. Each teammate is an independent Claude Code instance with its own context window. Agent Teams = "parallel external brains + summarized compression", **not** "single brain expansion".
 
@@ -69,8 +70,8 @@ Help me build an Agent team to complete this task...
 
 1. Goals first, then organization — clarify the task before assembling a team
 2. Team size depends on task complexity, parallel Agents recommended <=5
-3. Skill fallback chain: local Skill scan → find-skills external search → general-purpose subagent
-4. Model assignment: use Task tool's `model` parameter by complexity (opus/sonnet/haiku)
+3. Stop on a local capability match: reuse an existing Agent, Skill, Tool, Command, or MCP provider; search externally only for a proven gap; degrade only for a real host/permission/owner failure
+4. Model assignment: use runtime model selection only when the active host supports it
 5. Never assume external tools are available — verify before execution
 6. Critical milestones must have quality gates and rollback points
 7. Cost is a constraint, not a fixed commitment
@@ -80,15 +81,15 @@ Help me build an Agent team to complete this task...
 
 | Skill | Purpose | Stage |
 |-------|---------|-------|
-| **planning-with-files** | Manus-style file planning: task_plan.md, findings.md, progress.md | Stage 0 (mandatory) |
-| **find-skills** | External skill search and discovery | Stage 1 (Skill fallback chain) |
+| **planning-with-files** | Manus-style file planning: task_plan.md, findings.md, progress.md | Stage 0 when persistent planning is needed |
+| **find-skills** | External reusable Skill discovery after local multi-provider search proves a gap | Stage 1 (gap only) |
 
 ## 5 Orchestration Scenarios
 
 | # | Scenario | When to Use | Strategy |
 |---|----------|------------|----------|
 | 1 | Prompt Enhancement | Simple tasks, 1-2 steps | Optimize single agent prompt, no splitting |
-| 2 | Direct Skill Reuse | Task solvable by a single Skill | Plan + search, then call matching Skill directly |
+| 2 | Direct Provider Reuse | Task solvable by one existing Agent / Skill / Tool | Bind the matched provider directly; no external search or team required |
 | 3 | Plan + Review | Medium/complex tasks (**default**) | Plan → user confirms → parallel execution → review |
 | 4 | Lead-Member | Clear team division needed | Leader coordinates, Members execute in parallel |
 | 5 | Composite Orchestration | Complex tasks, no fixed pattern | Dynamically combine above scenarios |
@@ -96,17 +97,17 @@ Help me build an Agent team to complete this task...
 ## 6-Stage Workflow
 
 ```
-Stage 0: Planning Setup → Stage 1: Task Analysis + Skill Discovery → Stage 2: Team Assembly → Stage 3: Parallel Execution → Stage 4: Quality Gate → Stage 5: Delivery
+Stage 0: Planning Setup → Stage 1: Task Analysis + Capability Discovery → Stage 2: Team Assembly → Stage 3: Parallel Execution → Stage 4: Quality Gate → Stage 5: Delivery
 ```
 
-> **Note**: Stage 0 (planning-with-files) and Stage 1 (Skill search, including find-skills) are **mandatory prerequisites** for all scenarios.
+> **Note**: Stage 0 planning and Stage 1 local capability discovery precede team assembly. `find-skills` is conditional: run it only when local Agents, Skills, Tools, Commands, and MCP providers cannot cover the need. A successful native Agent dispatch after an uninstalled search result is not a fallback.
 
 ## Collaboration Modes
 
-| Mode | Communication | Use Case | Launch |
-|------|--------------|----------|--------|
-| Subagent | One-way: child → coordinator | Parallel independent tasks | `Task` tool |
-| Agent Team | Bidirectional (SendMessage) | Complex collaborative tasks | `TeamCreate` + `Task(team_name)` |
+| Mode | Communication | Use Case | Claude Code | Codex |
+|------|--------------|----------|-------------|-------|
+| Subagent | One-way: child → coordinator | Parallel independent tasks | Current host `Agent` / `Task` | Top-level `spawn_agent(task_name, message, fork_turns)` |
+| Agent Team | Bidirectional when a team bus exists | Complex collaborative tasks | `TeamCreate` + `Agent` / `Task(team_name)` only when exposed | Multiple concurrent top-level `spawn_agent` calls + main-thread synthesis |
 
 ## Agent → Skill Delegation Patterns
 
@@ -137,7 +138,10 @@ agent-teams-playbook/
 
 ## Compatibility
 
-- **Primary platform**: Claude Code
+- **Claude Code**: use the host's current `Agent` / `Task` and `Skill` surfaces. Use `TeamCreate` / `SendMessage` only when the host exposes them. Never pass Codex-only fields.
+- **Claude Code Agent input**: always provide the schema-required `prompt`; add `subagent_type`, `description`/`name`, and scope fields as accepted by the current host schema.
+- **Codex**: use only the top-level `spawn_agent(task_name, message, fork_turns)` contract. Do not pass `agent_type` / `fork_context`, and do not fall back to a legacy namespaced spawn API.
+- **OpenClaw / Cursor**: probe the current workspace/background-agent surface before claiming live parallel execution.
 
 ### Context Mode (Optional)
 
@@ -153,4 +157,4 @@ This Skill will NOT:
 
 ---
 
-**Version**: V4.5 | **Last Updated**: 2026-02-14 | **Maintainer**: KimYx0207
+**Version**: V4.8.0 | **Last Updated**: 2026-07-10 | **Maintainer**: KimYx0207

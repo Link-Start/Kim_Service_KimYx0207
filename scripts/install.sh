@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # agent-teams-playbook Installation Script
-# Version: V4.7
+# Version: V4.8.0
 # Description: Installs the agent-teams-playbook Skill for Claude Code, Codex, OpenClaw, or Cursor
 # Note: "swarm/蜂群" is generic; Claude Code's official concept is "Agent Teams"
 
 set -e
 
-VERSION="V4.7"
+VERSION="V4.8.0"
 SKILL_NAME="agent-teams-playbook"
 GITHUB_REPO="KimYx0207/agent-teams-playbook"
 GITHUB_BRANCH="main"
