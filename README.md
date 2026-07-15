@@ -1,5 +1,9 @@
 # Kim Service
 
+<p align="center">
+  <a href="README.md">简体中文</a> · <a href="README_EN.md">English</a>
+</p>
+
 **这是老金（KimYx0207）原创、自制并开源维护的 AI Hook 与 Agent Skills 合集。**
 
 这里收录的项目都来自老金在 AI 编码、内容创作、决策和自动化工作中的真实需求。每个项目解决一个明确问题，可以按需选择、单独安装和使用。

@@ -1,5 +1,9 @@
 # Kim Service
 
+<p align="center">
+  <a href="README.md">简体中文</a> · <a href="README_EN.md">English</a>
+</p>
+
 **A collection of original AI Hooks and Agent Skills created, open-sourced, and maintained by Lao Jin (KimYx0207).**
 
 These projects grew out of real needs in AI coding, content creation, decision-making, and automation. Each project solves a clear problem and can be selected, installed, and used independently.
