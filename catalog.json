@@ -28,7 +28,7 @@
       "source": "https://github.com/KimYx0207/HookPrompt",
       "revision": "a4c1faac0cc79860308f5553e3be0b0ac32415bb",
       "snapshot": "tracked-head-with-privacy-fix",
-      "contentSha256": "00bd401654f8445b2df924e16d5d50c87dc51f48bd814447d31d7173833b70cd",
+      "contentSha256": "e70e11ce9e6104b833bc40108acb0b57844bbc5ea3a1124fb60a6cab023d664f",
       "required": [
         "README.md",
         "README_EN.md",
@@ -50,7 +50,7 @@
       "source": "https://github.com/KimYx0207/Kim_Service",
       "revision": "753ff43bd9b1f9aee4d184c4f21e7f494af5a79f",
       "snapshot": "preserved-agent-teams-history-base;self-contained-component-snapshot",
-      "contentSha256": "f626ccd33b0bacd5d70976dbe3df32ad84e4333d0989097efdd74366901e71c6",
+      "contentSha256": "7c7ce287896f30173e77ff12c329c5ec7cebc11fab7cdeae4ba3622d16cc1045",
       "required": [
         "SKILL.md",
         "README.md",
@@ -104,7 +104,7 @@
       "source": "https://github.com/KimYx0207/findskill",
       "revision": "cf7635e3755c47b472bfb6dfd854680b5662ee26+public-package-adapter",
       "snapshot": "tracked-source-plus-self-contained-package",
-      "contentSha256": "66477fc8336d95d2b6f2b2c7c7ceceb3b185213885d383687b00dc9d28337c73",
+      "contentSha256": "51cb9bffd1629e72d3db0ea7d3fc49aaa3e9ee7f469a4fea7c0602542b0b1725",
       "required": [
         "SKILL.md",
         "README.md",
@@ -122,7 +122,7 @@
       "source": "https://github.com/KimYx0207/GoalPro",
       "revision": "39adc8db765e0e4ad4df8d4ce02e7059fed69f26",
       "snapshot": "self-contained-public-package;monorepo-install-doc-adapter",
-      "contentSha256": "11b015e90b69952842fbaac29d62814e3d511ebb4aca4c6be840a8c9572f4444",
+      "contentSha256": "de0b3afc94814b6e83605a84bbf9ce3c3aa9938753afd51bb2f0e04a9af6bb10",
       "required": [
         "SKILL.md",
         "references/examples.md",
@@ -141,7 +141,7 @@
       "source": "https://github.com/KimYx0207/Kim_Decision",
       "revision": "fbbe41cb6155ffd605c65b5af3f876ec25cfc0ea",
       "snapshot": "self-contained-public-package-with-privacy-and-monorepo-install-doc-adapter",
-      "contentSha256": "d8308f4bfaba6ac2967cab37c09a91d8823d4fb308137aee8ceab33ac6308f72",
+      "contentSha256": "dcfbc0ab817127ef3c2e6603180821f7825d9cce220ca77ac36784d97db4243a",
       "required": [
         "SKILL.md",
         "references/method.md",
@@ -187,7 +187,7 @@
       "source": "https://github.com/KimYx0207/SkillSemgrep",
       "revision": "eb6dd5127f5dedc325b9364edf71a2034e5e35b1",
       "snapshot": "tracked-head;monorepo-install-doc-adapter",
-      "contentSha256": "fb6c15786f48b0b79b1ccfa6c3dd36b1f2f149594b498848e17373291a2d55b3",
+      "contentSha256": "20877246b522885ea4bfa04bcdd7feccf23e1bea78e6750b49518caa6261f362",
       "required": [
         "SKILL.md",
         "README.md",

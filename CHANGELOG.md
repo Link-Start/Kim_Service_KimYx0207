@@ -2,6 +2,36 @@
 
 Kim Service uses one repository-level two-part public version (`V<major>.<minor>`) and one GitHub Release for the aggregated Hook and Skill collection. Component CHANGELOG files record component provenance; this file is the release-note authority.
 
+## V1.1 - 2026-07-15
+
+### Affected components
+
+- Repository documentation and cross-platform checkout rules.
+- HookPrompt, Agent Teams Playbook, Find Skill, GoalPro, Kim Decision, and Semgrep Skill packaging metadata.
+
+### User-visible changes
+
+- Rewrote the Chinese and English homepages to state clearly that Kim Service is a collection personally built, adapted, open-sourced, and maintained by Lao Jin (KimYx0207).
+- Simplified the public README around what each project does, how to use it, where to get updates, and how to contact or support the maintainer.
+- Moved catalog, content-hash, validation-gate, and release-protocol details out of the user-facing README and into `docs/maintenance.md`.
+- Added repository-wide LF checkout rules so component snapshots verify consistently on Windows, macOS, and Linux.
+
+### Breaking changes and migration
+
+- No user-facing breaking changes.
+- `V1.0` remains immutable, but fresh clones could report component hash drift when Git converted line endings on Windows. Use `V1.1` or later for a reproducible checkout and verification result.
+
+### Verification
+
+- Root repository, shared component runner, and release-contract checks passed after line-ending normalization.
+- All six affected component hashes were recalculated from LF-normalized files; the three canonical direct-sync components remained byte-identical.
+- A default Windows checkout from the remote `V1.1` tag passed the repository and component gates.
+- README layout checks passed with the contact banner centered at `720px` and both `260px` payment codes centered in one row.
+
+### Source revisions
+
+- Component source revisions are unchanged from `V1.0`; this release changes repository documentation, checkout normalization, and packaging hashes only.
+
 ## V1.0 - 2026-07-15
 
 ### Affected components
@@ -42,6 +72,7 @@ Kim Service uses one repository-level two-part public version (`V<major>.<minor>
 - README layout regressions passed for incorrect banner width, missing centered containers, uncentered payment tables or cells, and payment codes split across rows.
 - `node scripts/check-repository.mjs --release` is required to pass on the clean `main` release commit before tag creation.
 - Remote branch, tag, Release metadata, and fresh-tag-clone checks are required after publication and are reported separately from local readiness.
+- Superseded by `V1.1` for fresh-clone verification because the original catalog hashes of six imported components reflected a CRLF working tree rather than the LF Git blobs.
 
 ### Source revisions
 
