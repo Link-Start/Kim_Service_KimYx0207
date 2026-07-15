@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 2,
+  "repository": "KimYx0207/Kim_Service",
+  "componentCount": 9,
+  "release": {
+    "repository": "KimYx0207/Kim_Service",
+    "remoteName": "origin",
+    "branch": "main",
+    "versionFile": "VERSION",
+    "changelogFile": "CHANGELOG.md",
+    "versionPattern": "^V(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)$",
+    "tagEqualsVersion": true,
+    "releaseTitleEqualsVersion": true,
+    "historicalTagNamespaces": [
+      "v"
+    ]
+  },
+  "declaredGitlinks": [],
+  "allowedRuntimeDirectories": [
+    "hooks/hookprompt/.claude",
+    "hooks/hookprompt/.codex"
+  ],
+  "components": [
+    {
+      "id": "hookprompt",
+      "kind": "hook",
+      "path": "hooks/hookprompt",
+      "source": "https://github.com/KimYx0207/HookPrompt",
+      "revision": "a4c1faac0cc79860308f5553e3be0b0ac32415bb",
+      "snapshot": "tracked-head-with-privacy-fix",
+      "contentSha256": "00bd401654f8445b2df924e16d5d50c87dc51f48bd814447d31d7173833b70cd",
+      "required": [
+        "README.md",
+        "README_EN.md",
+        "LICENSE",
+        "CHANGELOG.md",
+        "NOTICE",
+        ".claude/hooks/user-prompt-submit.js",
+        ".codex/hooks/user-prompt-submit.js",
+        "test-hook.js"
+      ],
+      "validation": [
+        "node test-hook.js"
+      ]
+    },
+    {
+      "id": "agent-teams-playbook",
+      "kind": "skill",
+      "path": "skills/agent-teams-playbook",
+      "source": "https://github.com/KimYx0207/Kim_Service",
+      "revision": "753ff43bd9b1f9aee4d184c4f21e7f494af5a79f",
+      "snapshot": "preserved-agent-teams-history-base;self-contained-component-snapshot",
+      "contentSha256": "f626ccd33b0bacd5d70976dbe3df32ad84e4333d0989097efdd74366901e71c6",
+      "required": [
+        "SKILL.md",
+        "README.md",
+        "README_EN.md",
+        "LICENSE",
+        "CHANGELOG.md",
+        "NOTICE",
+        "tests/runtime-contracts.test.mjs"
+      ],
+      "validation": [
+        "node tests/runtime-contracts.test.mjs"
+      ]
+    },
+    {
+      "id": "memory-3layer",
+      "kind": "skill",
+      "path": "skills/memory-3layer",
+      "source": "canonical:skills/memory-3layer",
+      "revision": "canonical-direct-sync:2592d1f68b3a005355148b5cdccceedeb74d7755e037970087639602537832fb",
+      "snapshot": "canonical-direct-sync",
+      "contentSha256": "2592d1f68b3a005355148b5cdccceedeb74d7755e037970087639602537832fb",
+      "required": [
+        "SKILL.md",
+        "README.md",
+        "README_CN.md",
+        "LICENSE",
+        "CHANGELOG.md",
+        "NOTICE",
+        "install.ps1",
+        "install.sh",
+        "hooks/memory_loader.py",
+        "hooks/memory_extractor.py",
+        "hooks/memory_paths.py",
+        "scripts/install_memory_3layer.py",
+        "scripts/migrate_legacy_memory.py",
+        "scripts/record_memory.py",
+        "evals/test_install_memory_3layer.py",
+        "evals/test_migrate_legacy_memory.py",
+        "evals/test_recording.py",
+        "scripts/check_memory_3layer.py"
+      ],
+      "validation": [
+        "python scripts/check_memory_3layer.py .",
+        "python -m unittest discover -s evals -p \"test_*.py\""
+      ]
+    },
+    {
+      "id": "find-skill",
+      "kind": "skill",
+      "path": "skills/find-skill",
+      "source": "https://github.com/KimYx0207/findskill",
+      "revision": "cf7635e3755c47b472bfb6dfd854680b5662ee26+public-package-adapter",
+      "snapshot": "tracked-source-plus-self-contained-package",
+      "contentSha256": "66477fc8336d95d2b6f2b2c7c7ceceb3b185213885d383687b00dc9d28337c73",
+      "required": [
+        "SKILL.md",
+        "README.md",
+        "README_CN.md",
+        "LICENSE",
+        "CHANGELOG.md",
+        "NOTICE"
+      ],
+      "validation": []
+    },
+    {
+      "id": "goalpro",
+      "kind": "skill",
+      "path": "skills/goalpro",
+      "source": "https://github.com/KimYx0207/GoalPro",
+      "revision": "39adc8db765e0e4ad4df8d4ce02e7059fed69f26",
+      "snapshot": "self-contained-public-package;monorepo-install-doc-adapter",
+      "contentSha256": "11b015e90b69952842fbaac29d62814e3d511ebb4aca4c6be840a8c9572f4444",
+      "required": [
+        "SKILL.md",
+        "references/examples.md",
+        "references/source-rules.md",
+        "README.md",
+        "CHANGELOG.md",
+        "LICENSE",
+        "NOTICE"
+      ],
+      "validation": []
+    },
+    {
+      "id": "kim-decision",
+      "kind": "skill",
+      "path": "skills/kim-decision",
+      "source": "https://github.com/KimYx0207/Kim_Decision",
+      "revision": "fbbe41cb6155ffd605c65b5af3f876ec25cfc0ea",
+      "snapshot": "self-contained-public-package-with-privacy-and-monorepo-install-doc-adapter",
+      "contentSha256": "d8308f4bfaba6ac2967cab37c09a91d8823d4fb308137aee8ceab33ac6308f72",
+      "required": [
+        "SKILL.md",
+        "references/method.md",
+        "README.md",
+        "README.zh-CN.md",
+        "CHANGELOG.md",
+        "LICENSE",
+        "LICENSE-MIT",
+        "LICENSE-APACHE",
+        "NOTICE"
+      ],
+      "validation": []
+    },
+    {
+      "id": "meta-skill-creator",
+      "kind": "skill",
+      "path": "skills/meta-skill-creator",
+      "source": "canonical:skills/meta-skill-creator",
+      "revision": "canonical-direct-sync:294245547c7ce33062926329e361c08dee4218bf0b33ada25d1c66a6cd39319b",
+      "snapshot": "canonical-direct-sync",
+      "contentSha256": "294245547c7ce33062926329e361c08dee4218bf0b33ada25d1c66a6cd39319b",
+      "required": [
+        "SKILL.md",
+        "README.md",
+        "LICENSE",
+        "CHANGELOG.md",
+        "NOTICE",
+        "scripts/check_meta_skill_package.py",
+        "scripts/check_closed_loop.py",
+        "scripts/test_acceptance_runs.py",
+        "references/skill-contract.md"
+      ],
+      "validation": [
+        "python scripts/check_meta_skill_package.py .",
+        "python scripts/check_closed_loop.py .",
+        "python scripts/test_acceptance_runs.py"
+      ]
+    },
+    {
+      "id": "semgrep-skill",
+      "kind": "skill",
+      "path": "skills/semgrep-skill",
+      "source": "https://github.com/KimYx0207/SkillSemgrep",
+      "revision": "eb6dd5127f5dedc325b9364edf71a2034e5e35b1",
+      "snapshot": "tracked-head;monorepo-install-doc-adapter",
+      "contentSha256": "fb6c15786f48b0b79b1ccfa6c3dd36b1f2f149594b498848e17373291a2d55b3",
+      "required": [
+        "SKILL.md",
+        "README.md",
+        "README_EN.md",
+        "LICENSE",
+        "CHANGELOG.md",
+        "NOTICE",
+        "install.ps1",
+        "install.sh"
+      ],
+      "validation": []
+    },
+    {
+      "id": "xiaohongshu-skill",
+      "kind": "skill",
+      "path": "skills/xiaohongshu-skill",
+      "source": "canonical:skills/xiaohongshu-skill",
+      "revision": "canonical-direct-sync:9464b5dab5222a671b546a5dc1b3e73f45f19f53e4bb54fe3b3b2401a2b537ca",
+      "snapshot": "canonical-direct-sync",
+      "contentSha256": "9464b5dab5222a671b546a5dc1b3e73f45f19f53e4bb54fe3b3b2401a2b537ca",
+      "required": [
+        "SKILL.md",
+        "README.md",
+        "LICENSE",
+        "CHANGELOG.md",
+        "NOTICE",
+        "assets/rednote-note-workbench.html",
+        "scripts/check-chat-output-fixtures.mjs",
+        "scripts/check-page-direction-fixtures.mjs",
+        "scripts/check-narrative-route-fixtures.mjs",
+        "scripts/check-visual-workspace-contract.mjs"
+      ],
+      "validation": [
+        "node scripts/check-chat-output-fixtures.mjs",
+        "node scripts/check-page-direction-fixtures.mjs",
+        "node scripts/check-narrative-route-fixtures.mjs",
+        "node scripts/check-visual-workspace-contract.mjs"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/images/contact-qr.png",
+      "sha256": "68f910168cbe5a6095dfba73648abb06f8f6ad6231c97b8cf0d68e77a07c1f67",
+      "readme": {
+        "group": "contact",
+        "order": 0,
+        "width": 720
+      }
+    },
+    {
+      "path": "docs/images/wechat-pay.jpg",
+      "sha256": "447b93d173582283712b4652c89a02d55f1b64253aa6b003127d8b5b70990839",
+      "readme": {
+        "group": "payments",
+        "order": 0,
+        "width": 260
+      }
+    },
+    {
+      "path": "docs/images/alipay.jpg",
+      "sha256": "79d7327408159145ff45996b5051886aed9d25b51e4f9e0a25e07fa0151d9754",
+      "readme": {
+        "group": "payments",
+        "order": 1,
+        "width": 260
+      }
+    }
+  ],
+  "readmeLayout": {
+    "schemaVersion": 1,
+    "rootDocumentPattern": "^README(?:[._-].+)?\\.md$",
+    "componentDocumentPattern": "^README(?:[._-].+)?\\.md$",
+    "groups": [
+      {
+        "id": "contact",
+        "kind": "centered-single",
+        "container": "p",
+        "align": "center"
+      },
+      {
+        "id": "payments",
+        "kind": "centered-row",
+        "container": "table",
+        "align": "center",
+        "cellAlign": "center"
+      }
+    ]
+  }
+}

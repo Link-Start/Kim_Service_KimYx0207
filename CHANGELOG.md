@@ -1,31 +1,56 @@
 # Changelog
 
-## Unreleased
+Kim Service uses one repository-level two-part public version (`V<major>.<minor>`) and one GitHub Release for the aggregated Hook and Skill collection. Component CHANGELOG files record component provenance; this file is the release-note authority.
 
-## [4.8.0] - 2026-07-10
+## V1.0 - 2026-07-15
 
-### Fixed
+### Affected components
 
-- Replaced the mandatory Skill fallback ritual with stop-on-match capability resolution. Existing local Agents, Skills, Tools, Commands, and MCP providers now win immediately; external discovery runs only for a proven gap, and degraded mode requires a real host, permission, or owner failure.
-- Added explicit native contracts for both primary runtimes: Claude Code keeps its `Agent` / `Task` and optional Team surfaces, while Codex uses only top-level `spawn_agent(task_name, message, fork_turns)` without legacy typed/namespaced fallback.
-- Recorded the live Claude Code Agent schema requirement that `prompt` is mandatory; owner/type/name fields do not replace the worker prompt.
+- Hook: HookPrompt.
+- Skills: Agent Teams Playbook, Memory 3-Layer, Find Skill, GoalPro, Kim Decision, Meta Skill Creator, Semgrep Skill, and Xiaohongshu Skill.
 
-### Added
+### User-visible changes
 
-- Added runtime-native skill package directories for Claude Code and Codex:
-  `.claude/skills/agent-teams-playbook/` and `.agents/skills/agent-teams-playbook/`.
-- Added Codex config metadata in `.codex/config.toml`.
-- Added `NOTICE` for release and package metadata.
+- Launched Kim Service as the consolidated public collection for one Hook and eight self-contained Skills.
+- Included Agent Teams Playbook as a self-contained Skill under `skills/agent-teams-playbook`.
+- Made every Skill directory independently understandable and installable with its own `SKILL.md`, README, LICENSE, CHANGELOG, NOTICE, and required runtime files.
+- Standardized component verification behind one catalog-driven runner and removed component-specific validation exceptions from the root README.
+- Standardized public README support visuals through one catalog-projected layout contract: the `720px` contact banner is centered independently, while the two `260px` payment codes share one centered row with centered cells.
+- Replaced the residual fixed candidate-file checklist in Meta Skill Creator with conditional `core / conditional / release` rules.
+- Renamed the Claude-specific memory component to platform-neutral `memory-3layer`, with one shared core, Claude Code and Codex Hook adapters, an explicit manual route, and a non-destructive legacy-data migration.
+- Added direct canonical-to-Kim-Service exact projection for Meta Skill Creator, Memory 3-Layer, and Xiaohongshu Skill, with no persistent `SKILL-*` intermediary repository and no wrapper-composition layer.
+- Added catalog-pinned component hashes, public-boundary checks, secret and machine-path scanning, nested-Git and runtime-projection checks, and protected QR asset verification.
+- Retained the required contact QR, WeChat Pay QR, and Alipay QR assets.
+- Established the exact repository release contract: `VERSION`, annotated tag, GitHub Release tag, and GitHub Release title use the same case-sensitive `V<major>.<minor>` string.
 
-### Changed
+### Breaking changes and migration
 
-- Updated the install script to prefer the target runtime package directory when
-  installing locally or from GitHub, while keeping the root `SKILL.md` fallback
-  for runtimes without a dedicated package tree.
+- The public repository identity changes from `KimYx0207/agent-teams-playbook` to `KimYx0207/Kim_Service`. Existing clones should update `origin` to the new repository URL.
+- GitHub repository-rename redirects preserve the former `KimYx0207/agent-teams-playbook` web and Git URLs; the old repository name must not be reused because doing so would disable those redirects.
+- The historical lowercase `v4.8.0` tag and Release remain part of the preserved Agent Teams Playbook history. Kim Service collection releases use a separate uppercase `V<major>.<minor>` namespace beginning with `V1.0`.
+- Users of former component repositories should use the corresponding `hooks/<slug>` or `skills/<slug>` path in Kim Service for current consolidated releases.
+- Persistent `SKILL-*` intermediary directories and wrapper-based public export are no longer part of the Meta Skill Creator or Xiaohongshu Skill publication workflow.
 
 ### Verification
 
-- `node --test tests/runtime-contracts.test.mjs`
-- `bash -n scripts/install.sh`
-- Live Claude Code `2.1.196` regression: one Skill call and one Agent call with the required `prompt`, no retry.
-- Codex task evidence: three successful native top-level `spawn_agent` calls.
+- `node scripts/check-repository.mjs` passed for 9 components, 242 repository files, and 3 protected QR assets.
+- Canonical/runtime/Kim Service direct-sync and full relative-path/SHA-256 gates passed for Meta Skill Creator, Memory 3-Layer, and Xiaohongshu Skill.
+- Memory 3-Layer package validation and 27 installer, migration, recording, poisoning-resistance, and loader-preservation tests passed; real Claude Code and Codex Hook smoke remains a separate runtime proof layer.
+- All catalog-declared component checks passed through the shared `node scripts/check-components.mjs` runner; components without an independent command remained covered by the same repository root gate.
+- The exact `V1.0` release-contract regression passed, including rejection of legacy or malformed collection version forms and empty CHANGELOG sections.
+- README layout regressions passed for incorrect banner width, missing centered containers, uncentered payment tables or cells, and payment codes split across rows.
+- `node scripts/check-repository.mjs --release` is required to pass on the clean `main` release commit before tag creation.
+- Remote branch, tag, Release metadata, and fresh-tag-clone checks are required after publication and are reported separately from local readiness.
+
+### Source revisions
+
+- HookPrompt: `a4c1faac0cc79860308f5553e3be0b0ac32415bb`.
+- Agent Teams Playbook history base: `753ff43bd9b1f9aee4d184c4f21e7f494af5a79f`.
+- Memory 3-Layer legacy source base: `1d60800c1a34dfe83d8e2b102b24c7d57d87ca53`.
+- Memory 3-Layer canonical direct-sync tree: `2592d1f68b3a005355148b5cdccceedeb74d7755e037970087639602537832fb`.
+- Find Skill: `cf7635e3755c47b472bfb6dfd854680b5662ee26`.
+- GoalPro: `39adc8db765e0e4ad4df8d4ce02e7059fed69f26`.
+- Kim Decision: `fbbe41cb6155ffd605c65b5af3f876ec25cfc0ea`.
+- Meta Skill Creator canonical direct-sync tree: `294245547c7ce33062926329e361c08dee4218bf0b33ada25d1c66a6cd39319b`.
+- Semgrep Skill: `eb6dd5127f5dedc325b9364edf71a2034e5e35b1`.
+- Xiaohongshu Skill canonical direct-sync tree: `9464b5dab5222a671b546a5dc1b3e73f45f19f53e4bb54fe3b3b2401a2b537ca`.

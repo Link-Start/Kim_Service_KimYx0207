@@ -1,0 +1,60 @@
+# HookPrompt repository ignore rules
+
+# 本机运行状态和分析产物
+.meta-kim/
+graphify-out/
+
+# 外部代理/工具生成的本地说明，不属于 HookPrompt 产品源文件
+AGENTS.md
+CLAUDE.md
+
+# Claude Code 本机状态/权限配置
+.claude/settings.local.json
+.claude/project-task-state.json
+
+# Hook日志文件（临时文件，不需要提交）
+hook-prompt-optimizer.log
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器和IDE
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*.swo
+*~
+
+# 日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 依赖目录（如果将来添加构建工具）
+node_modules/
+bower_components/
+
+# 构建输出（如果将来添加构建工具）
+dist/
+build/
+.cache/
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+
+# 临时文件
+*.tmp
+*.temp
+.temp/
+tmp/
+
+# 备份文件
+*.bak
+*.backup
+__pycache__/

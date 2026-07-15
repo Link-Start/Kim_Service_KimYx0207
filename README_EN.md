@@ -1,160 +1,78 @@
-[English](./README_EN.md) | [中文](./README.md)
+# Kim Service
 
-# Agent Teams Orchestration Playbook
+An open-source collection of reusable Hooks and Skills for AI coding assistants such as Claude Code and Codex.
 
-<div align="center">
+This monorepo reduces discovery, installation, and maintenance overhead while applying one repository-level structure and public-safety gate. Every `skills/<slug>/` directory is a complete, self-contained public package: `SKILL.md` is the entry point, while the same directory also carries its README, license, and CHANGELOG/NOTICE records for version history and attribution. A user does not need to return to the former standalone repository to understand, install, or audit the package. Existing component-level validation commands and source revisions are recorded in [catalog.json](catalog.json); components without a standalone validator are still covered by the repository gate for structure and publication boundaries.
 
-![GitHub stars](https://img.shields.io/github/stars/KimYx0207/agent-teams-playbook?style=social)
-![GitHub forks](https://img.shields.io/github/forks/KimYx0207/agent-teams-playbook?style=social)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/version-4.8.0-green.svg)
-![Runtime](https://img.shields.io/badge/runtimes-Claude%20Code%20%7C%20Codex-blue.svg)
+Kim Service is the publication authority for the aggregated packages. Component directories retain their own documentation, licensing, change history, and attribution, while the repository `VERSION`, Git tags, Releases, and [release notes](CHANGELOG.md) are committed and published from Kim Service. Public versions use the exact, case-sensitive two-part form `V<major>.<minor>`; the tag and GitHub Release title must equal `VERSION` byte for byte.
 
-**A cross-runtime Skill for executable multi-agent orchestration on Claude Code and Codex**
+## Components
 
-</div>
+| Type | Component | Purpose |
+|---|---|---|
+| Hook | [HookPrompt](hooks/hookprompt) | Turns casual requests into executable and verifiable prompts |
+| Skill | [Agent Teams Playbook](skills/agent-teams-playbook) | Multi-agent orchestration and synthesis contracts |
+| Skill | [Memory 3-Layer](skills/memory-3layer) | A three-layer memory system with a neutral core and Claude Code/Codex adapters |
+| Skill | [Find Skill](skills/find-skill) | Finds and installs Agent Skills with Windows guidance |
+| Skill | [GoalPro](skills/goalpro) | Produces clear, bounded, verifiable Goal and Loop Prompts |
+| Skill | [Kim Decision](skills/kim-decision) | Turns fuzzy questions into evidence-backed next actions |
+| Skill | [Meta Skill Creator](skills/meta-skill-creator) | Creates, refactors, and validates reusable Skill packages |
+| Skill | [Semgrep Skill](skills/semgrep-skill) | Runs code security scans with Semgrep |
+| Skill | [Xiaohongshu Skill](skills/xiaohongshu-skill) | Produces reviewable Rednote copy and visual decisions |
 
----
+The inventory is fixed at one Hook and eight Skills. Any inventory change must update both the catalog and repository checker.
 
-## Overview
+## Usage
 
-`agent-teams-playbook` is a cross-runtime Skill for generating executable multi-agent orchestration strategies with runtime-native contracts for Claude Code and Codex.
+1. Open the component directory you need.
+2. For a Hook, start with its README. For a Skill, read the colocated SKILL.md, README, LICENSE, and CHANGELOG/NOTICE.
+3. Follow the component-specific project or user-level installation steps.
+4. Run the component validation commands when the catalog declares them; otherwise run at least the repository gate.
 
-> **Core Concept**: "Swarm" is the generic industry term; Claude Code's official concept is **Agent Teams**. Each teammate is an independent Claude Code instance with its own context window. Agent Teams = "parallel external brains + summarized compression", **not** "single brain expansion".
+HookPrompt intentionally retains hooks/hookprompt/.claude and hooks/hookprompt/.codex as installable product content. Other components must not carry root-level .agents, .claude, or .codex runtime projections.
 
-The core philosophy is "adaptive decision-making" rather than "hardcoded configuration", designed for real-world uncertainty:
+## Verification
 
-- Skill/tool availability changes
-- Multi-session or multi-window context forks
-- Quality, speed, and cost objective conflicts
+From the repository root:
 
-## Trigger Methods
+    node scripts/check-repository.mjs
 
-**Natural Language Triggers:**
-- agent teams, agent swarm, multi-agent, agent collaboration, agent orchestration, parallel agents
-- multi-agent collaboration, swarm orchestration, agent team
+After creating the release commit and before creating its tag, run the release-readiness gate on the clean worktree:
 
-**Skill Command:**
-- `/agent-teams-playbook [task description]`
+    node scripts/check-repository.mjs --release
 
-## Installation
+This mode additionally checks the exact `V<major>.<minor>` VERSION form, five non-empty CHANGELOG sections, the `main` branch, `origin` identity, existing uppercase `V*` release tags, and worktree state. Historical lowercase `v*` tags are outside the collection version namespace. Remote divergence, remote tags, GitHub Release metadata, and the temporary clone at the remote tag remain separate post-push release checks.
 
-### Option 1: CLI Installation (Recommended)
+    node scripts/check-components.mjs
+    node scripts/release-contract.test.mjs
 
-```bash
-git clone https://github.com/KimYx0207/agent-teams-playbook.git
-cd agent-teams-playbook
-chmod +x scripts/install.sh
-./scripts/install.sh
-```
+Every component uses the same `required` and `validation` fields in `catalog.json`. `check-components.mjs` executes declared component checks data-first; components without an independent command remain covered by the repository gate. The root README carries no component-specific exception.
 
-### Option 2: Manual Installation
+Before release, verify that every Skill directory remains self-contained. Version updates are complete only after Kim Service records the change, commits it, pushes it, and publishes a new repository Release; updating an import source alone is not a publication.
 
-```bash
-mkdir -p ~/.claude/skills/agent-teams-playbook
-cp .claude/skills/agent-teams-playbook/SKILL.md ~/.claude/skills/agent-teams-playbook/
-cp .claude/skills/agent-teams-playbook/README.md ~/.claude/skills/agent-teams-playbook/
-```
+The repository checker rejects nested Git repositories, undeclared gitlinks, ignored public files, environment files, private keys, common real-token formats, machine-specific absolute paths, missing components, component `contentSha256` drift from the catalog, and protected QR asset drift.
 
-### Verify Installation
+## Contact and support
 
-```bash
-# Use Skill command
-/agent-teams-playbook my task description
+<p align="center">
+  <img src="docs/images/contact-qr.png" alt="Contact QR code" width="720">
+</p>
 
-# Or use natural language
-Help me build an Agent team to complete this task...
-```
+<table align="center">
+  <tr>
+    <th align="center">WeChat Pay</th>
+    <th align="center">Alipay</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/wechat-pay.jpg" alt="WeChat Pay QR code" width="260"></td>
+    <td align="center"><img src="docs/images/alipay.jpg" alt="Alipay QR code" width="260"></td>
+  </tr>
+</table>
 
-## Core Design Principles
+## Public boundary
 
-1. Goals first, then organization — clarify the task before assembling a team
-2. Team size depends on task complexity, parallel Agents recommended <=5
-3. Stop on a local capability match: reuse an existing Agent, Skill, Tool, Command, or MCP provider; search externally only for a proven gap; degrade only for a real host/permission/owner failure
-4. Model assignment: use runtime model selection only when the active host supports it
-5. Never assume external tools are available — verify before execution
-6. Critical milestones must have quality gates and rollback points
-7. Cost is a constraint, not a fixed commitment
-8. Skill Discovery is purely dynamic — scan available Skills from system-reminder, never hardcode
+Only catalog-declared public component snapshots belong here. Internal research, test sessions, runtime records, machine state, customer material, and private configuration are excluded.
 
-## Required Skill Dependencies
+## License
 
-| Skill | Purpose | Stage |
-|-------|---------|-------|
-| **planning-with-files** | Manus-style file planning: task_plan.md, findings.md, progress.md | Stage 0 when persistent planning is needed |
-| **find-skills** | External reusable Skill discovery after local multi-provider search proves a gap | Stage 1 (gap only) |
-
-## 5 Orchestration Scenarios
-
-| # | Scenario | When to Use | Strategy |
-|---|----------|------------|----------|
-| 1 | Prompt Enhancement | Simple tasks, 1-2 steps | Optimize single agent prompt, no splitting |
-| 2 | Direct Provider Reuse | Task solvable by one existing Agent / Skill / Tool | Bind the matched provider directly; no external search or team required |
-| 3 | Plan + Review | Medium/complex tasks (**default**) | Plan → user confirms → parallel execution → review |
-| 4 | Lead-Member | Clear team division needed | Leader coordinates, Members execute in parallel |
-| 5 | Composite Orchestration | Complex tasks, no fixed pattern | Dynamically combine above scenarios |
-
-## 6-Stage Workflow
-
-```
-Stage 0: Planning Setup → Stage 1: Task Analysis + Capability Discovery → Stage 2: Team Assembly → Stage 3: Parallel Execution → Stage 4: Quality Gate → Stage 5: Delivery
-```
-
-> **Note**: Stage 0 planning and Stage 1 local capability discovery precede team assembly. `find-skills` is conditional: run it only when local Agents, Skills, Tools, Commands, and MCP providers cannot cover the need. A successful native Agent dispatch after an uninstalled search result is not a fallback.
-
-## Collaboration Modes
-
-| Mode | Communication | Use Case | Claude Code | Codex |
-|------|--------------|----------|-------------|-------|
-| Subagent | One-way: child → coordinator | Parallel independent tasks | Current host `Agent` / `Task` | Top-level `spawn_agent(task_name, message, fork_turns)` |
-| Agent Team | Bidirectional when a team bus exists | Complex collaborative tasks | `TeamCreate` + `Agent` / `Task(team_name)` only when exposed | Multiple concurrent top-level `spawn_agent` calls + main-thread synthesis |
-
-## Agent → Skill Delegation Patterns
-
-| Pattern | Flow | Best For |
-|---------|------|----------|
-| Direct Call | Coordinator → `Skill` → result | Single-step Skill tasks |
-| Delegated Call | Coordinator → `Task(prompt)` → subagent → `Skill` → report | Parallel Skills, long-running |
-| Team Member Call | `TeamCreate` → assign → member → `Skill` → `SendMessage` | Complex coordinated tasks |
-
-## Repository Structure
-
-```text
-agent-teams-playbook/
-├── .agents/skills/agent-teams-playbook/   # Codex skill package
-│   ├── SKILL.md
-│   └── README.md
-├── .claude/skills/agent-teams-playbook/   # Claude Code skill package
-│   ├── SKILL.md
-│   └── README.md
-├── .codex/config.toml                     # Codex project metadata
-├── scripts/install.sh                     # Standalone installer
-├── CHANGELOG.md
-├── NOTICE
-├── LICENSE
-├── SKILL.md                               # Root compatibility entrypoint
-└── README.md                              # Developer documentation
-```
-
-## Compatibility
-
-- **Claude Code**: use the host's current `Agent` / `Task` and `Skill` surfaces. Use `TeamCreate` / `SendMessage` only when the host exposes them. Never pass Codex-only fields.
-- **Claude Code Agent input**: always provide the schema-required `prompt`; add `subagent_type`, `description`/`name`, and scope fields as accepted by the current host schema.
-- **Codex**: use only the top-level `spawn_agent(task_name, message, fork_turns)` contract. Do not pass `agent_type` / `fork_context`, and do not fall back to a legacy namespaced spawn API.
-- **OpenClaw / Cursor**: probe the current workspace/background-agent surface before claiming live parallel execution.
-
-### Context Mode (Optional)
-
-Default: no `context: fork`. The 6-stage workflow runs in the main session. Add `context: fork` to SKILL.md frontmatter for isolated execution.
-
-## Non-Goals
-
-This Skill will NOT:
-- Force fixed team structures
-- Force single Skill dependencies
-- Promise fixed speed/cost multipliers
-- Claim capabilities beyond Claude Code's actual limits
-
----
-
-**Version**: V4.8.0 | **Last Updated**: 2026-07-10 | **Maintainer**: KimYx0207
+Repository-level material is licensed under MIT. Component-specific LICENSE, NOTICE, and dual-license files remain authoritative inside each component directory; Kim Service versions and Releases do not replace those terms.
