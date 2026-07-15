@@ -1,10 +1,8 @@
 # Kim Service
 
-**这是老金（KimYx0207）亲自制作、改造并开源维护的 AI Hook 与 Agent Skills 合集。**
+**这是老金（KimYx0207）原创、自制并开源维护的 AI Hook 与 Agent Skills 合集。**
 
 这里收录的项目都来自老金在 AI 编码、内容创作、决策和自动化工作中的真实需求。每个项目解决一个明确问题，可以按需选择、单独安装和使用。
-
-部分项目基于优秀的开源工具或开放标准继续开发；原作者、许可证和第三方依赖归属，均按各组件中的 `LICENSE` 与 `NOTICE` 保留。
 
 ## 收录内容
 
@@ -49,4 +47,4 @@
 
 ## 开源说明
 
-Kim Service 中的项目均由老金（KimYx0207）制作、改造并开源维护。仓库级内容采用 MIT License；各项目目录内的 `LICENSE`、`NOTICE` 或双许可证声明继续独立生效。
+除 [Find Skill](skills/find-skill) 是老金在开源项目基础上改造外，其余项目均由老金（KimYx0207）原创、自制并开源维护。Kim Service 仓库级内容采用 MIT License；各项目目录内的许可条款继续独立生效。

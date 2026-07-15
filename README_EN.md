@@ -1,10 +1,8 @@
 # Kim Service
 
-**A collection of AI Hooks and Agent Skills personally built, adapted, open-sourced, and maintained by Lao Jin (KimYx0207).**
+**A collection of original AI Hooks and Agent Skills created, open-sourced, and maintained by Lao Jin (KimYx0207).**
 
 These projects grew out of real needs in AI coding, content creation, decision-making, and automation. Each project solves a clear problem and can be selected, installed, and used independently.
-
-Some projects build on excellent open-source tools or open standards. Original authorship, licenses, and third-party attribution remain preserved in each component's `LICENSE` and `NOTICE` files.
 
 ## What's included
 
@@ -49,4 +47,4 @@ If these open-source projects help you, please consider starring, sharing, or bu
 
 ## Open-source note
 
-The projects in Kim Service are built, adapted, open-sourced, and maintained by Lao Jin (KimYx0207). Repository-level material uses the MIT License; component-level `LICENSE`, `NOTICE`, and dual-license terms remain independently authoritative.
+Except for [Find Skill](skills/find-skill), which Lao Jin adapted from an open-source project, every project in Kim Service was originally created, open-sourced, and maintained by Lao Jin (KimYx0207). Repository-level material uses the MIT License; component-level license terms remain independently authoritative.
