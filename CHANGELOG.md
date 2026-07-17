@@ -2,6 +2,31 @@
 
 Kim Service uses one repository-level two-part public version (`V<major>.<minor>`) and one GitHub Release for the aggregated Hook and Skill collection. Component CHANGELOG files record component provenance; this file is the release-note authority.
 
+## Unreleased - 2026-07-17
+
+### Affected components
+
+- HookPrompt documentation.
+
+### User-visible changes
+
+- Added Chinese and English troubleshooting for Windows `PreToolUse:Bash` failures that mention `graphify.EXE`.
+- Clarified that this error belongs to a Graphify command path in the failing project's `.codex/hooks.json`, not HookPrompt's `UserPromptSubmit` or the installed Node.js version.
+- Documented portable `graphify hook-check` configuration and a correctly quoted forward-slash absolute-path fallback.
+
+### Breaking changes and migration
+
+- No user-facing breaking changes.
+
+### Verification
+
+- HookPrompt tests passed 32/32.
+- The portable Graphify command completed locally without the malformed Windows-path error.
+
+### Source revisions
+
+- HookPrompt: `53fd35e0cf71c563c0a8feebcb17b7a2441c8e04`.
+
 ## V1.1 - 2026-07-15
 
 ### Affected components

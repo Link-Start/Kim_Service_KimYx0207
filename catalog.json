@@ -26,9 +26,9 @@
       "kind": "hook",
       "path": "hooks/hookprompt",
       "source": "https://github.com/KimYx0207/HookPrompt",
-      "revision": "a4c1faac0cc79860308f5553e3be0b0ac32415bb",
+      "revision": "53fd35e0cf71c563c0a8feebcb17b7a2441c8e04",
       "snapshot": "tracked-head-with-privacy-fix",
-      "contentSha256": "e70e11ce9e6104b833bc40108acb0b57844bbc5ea3a1124fb60a6cab023d664f",
+      "contentSha256": "4f9021fa72ba5c09d0fe1e69d3bcb5d15f2117445e072d610a7cd635a87cefc5",
       "required": [
         "README.md",
         "README_EN.md",

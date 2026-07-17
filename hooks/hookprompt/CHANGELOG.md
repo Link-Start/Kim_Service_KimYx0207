@@ -2,6 +2,11 @@
 
 本文件记录 HookPrompt 的重要变更。
 
+## Kim Service Unreleased - 2026-07-17
+
+- 同步 `KimYx0207/HookPrompt` 修订 `53fd35e0cf71c563c0a8feebcb17b7a2441c8e04` 的双语排障说明。
+- 明确区分 HookPrompt 的 `UserPromptSubmit` 与 Graphify 的 `PreToolUse:Bash` 路径错误，避免误删 HookPrompt 或误降级 Node.js。
+
 ## Kim Service V1.0 - 2026-07-15
 
 - 基于 `KimYx0207/HookPrompt` 修订 `a4c1faac0cc79860308f5553e3be0b0ac32415bb` 纳入 Kim Service。
